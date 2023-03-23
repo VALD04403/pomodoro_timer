@@ -52,7 +52,7 @@ export default {
     startMethod() {
       this.isStarted = true;
       this.history.push("work");
-      this.remainTime = 15;
+      this.remainTime = 1500;
       this.countDown();
     },
     stopMethod() {
@@ -67,10 +67,6 @@ export default {
       let textNotif = "";
       let iconNotif = "";
       if (this.history[this.history.length - 1] === "work") {
-        console.log(
-          this.history,
-          this.history.slice(this.history.length - 8, this.history.length - 1)
-        );
         if (
           this.history
             .slice(this.history.length - 8, this.history.length - 1)
@@ -78,11 +74,11 @@ export default {
         ) {
           textNotif = "Take a long break";
           this.history.push("long_break");
-          this.remainTime = 10;
+          this.remainTime = 900;
         } else {
           textNotif = "Take a short break";
           this.history.push("short_break");
-          this.remainTime = 5;
+          this.remainTime = 300;
         }
       } else if (
         this.history[this.history.length - 1] ===
@@ -90,7 +86,7 @@ export default {
       ) {
         textNotif = "Return to work";
         this.history.push("work");
-        this.remainTime = 15;
+        this.remainTime = 1500;
       }
       new Notification("Pomodoro", { textNotif, iconNotif });
     },
